@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  app:
+    image: 'chatapp-ws:latest'
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8085:8085"
+    depends_on:
+      - mongo_db
+  mongo_db:
+    image: "mongodb/mongodb-community-server:6.0-ubi8"
+    restart: always
+    ports:
+      - 27017:27017

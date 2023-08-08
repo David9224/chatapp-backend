@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.2'
+	id 'io.spring.dependency-management' version '1.1.2'
+}
+
+group = 'com.david'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation group: 'com.corundumstudio.socketio', name: 'netty-socketio', version: '2.0.3'
+//	implementation group: 'org.springframework.data', name: 'spring-data-mongodb', version: '4.1.2'
+
+//	implementation group: 'org.mongodb', name: 'mongodb-driver-sync', version: '4.10.2'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '3.1.2'
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
